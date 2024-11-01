@@ -8,7 +8,8 @@ fun main() {
         println("press 3, for Division")
         println("press 4, for subtraction")
         println("press 5, to calculate quadratic problem")
-        println("press 6, to  Exit")
+        println("press 6, to calculate area of tiangle")
+        println("press 0, to  Exit")
 
         val choice = readln().toIntOrNull()
 
@@ -18,7 +19,8 @@ fun main() {
             3 -> div()
             4 -> dif()
             5 -> qua()
-            6 -> {
+            6 -> triangle()
+            0 -> {
                 println("Exiting...")
                 return
             }
@@ -128,3 +130,46 @@ fun qua(){
         println("the real part is $realpart and imaginarypart=$imaginarypart i")
     }
 }
+fun triangle() {
+
+    println("a for the height, b for the base, and c for the diagonal. Carefully insert values:")
+    val a = readln().toDoubleOrNull() ?: return println("Invalid input. Enter a number.")
+    val b = readln().toDoubleOrNull() ?: return println("Invalid input. Enter a number.")
+    val c = readln().toDoubleOrNull() ?: return println("Invalid input. Enter a number.")
+
+    if (a == b && b == c) {
+        println("Equilateral triangle")
+         equilateral(a)
+
+    } else if (a == b || b == c || a == c) {
+        println("Isosceles triangle")
+       isosceles(a, b)
+
+    } else {
+        println("Scalene triangle")
+       scalene(a, b, c)
+
+    }
+}
+
+fun equilateral(a: Double){
+    // Area = (sqrt(3) / 4) * a^2
+   val area= (sqrt(3.0) / 4) * (a * a)
+    println("Area: $area")
+}
+
+fun isosceles(a: Double, b: Double) {
+    // Height = sqrt(a^2 - (b/2)^2)
+    val height = Math.sqrt(a * a - (b / 2) * (b / 2))
+   val  area= (0.5 * b * height)
+    println("Area: $area")
+}
+
+fun scalene(a: Double, b: Double, c: Double) {
+    // Semi-perimeter
+    val s = (a + b + c) / 2
+    // Area = sqrt(s * (s - a) * (s - b) * (s - c))
+   val area=sqrt(s * (s - a) * (s - b) * (s - c))
+    println("Area: $area")
+}
+
