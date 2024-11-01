@@ -33,14 +33,13 @@ fun sum() {
     var summation = 0.0
 // while(true) means it will loop till break occur
     while (true) {
-        val inputsum = readln()
-        val number = inputsum.toDoubleOrNull()
-        if (number == null) {
+        val input = readln().toDoubleOrNull()
+        if (input == null) {
             println("Invalid input. Please enter a valid number.")
             continue
         }
-        if (number == 0.0) break
-        summation += number
+        if (input == 0.0) break
+        summation += input
     }
 
     println("The sum is: $summation")
@@ -52,14 +51,14 @@ fun mul(){
 
 
     while (true) {
-        val inputmul= readln().toDoubleOrNull()
-        if (inputmul==null)
+        val input= readln().toDoubleOrNull()
+        if (input==null)
         {
             println("Invalid input . please enter valid number")
             continue
         }
-        if(inputmul==1.0)break
-        multiplication *= inputmul
+        if(input==1.0)break
+        multiplication *= input
     }
     println("the multiplication is: $multiplication")
 
@@ -71,17 +70,17 @@ fun div() {
 
     while (true) {
         println("Enter another number and press 1 to see result ):")
-        val inputdiv = readln().toDoubleOrNull()
-        if ( inputdiv== null) {
+        val input = readln().toDoubleOrNull()
+        if ( input== null) {
             println("Invalid input. Please enter a number.")
             continue
         }
-        if (inputdiv == 1.0) break
-        if (inputdiv== 0.0) {
+        if (input== 1.0) break
+        if (input== 0.0) {
             println("Cannot divide by zero. Please enter a different number.")
             continue
         }
-        division /= inputdiv    }
+        division /= input  }
 
     println("The result is: $division")
 }
@@ -93,14 +92,14 @@ fun dif() {
 
     while (true) {
         println("Enter another number and enter 0 to see result):")
-        val inputdif = readln().toDoubleOrNull()
+        val input = readln().toDoubleOrNull()
 
-        if (inputdif == null) {
+        if (input == null) {
             println("Invalid input. Please enter a valid number.")
             continue
         }
-        if (inputdif == 0.0) break
-        difference -= inputdif
+        if (input == 0.0) break
+        difference -= input
     }
 
     println("The difference is: $difference")
@@ -123,5 +122,9 @@ fun qua(){
         println("the possible result is $result")
     }
     else
-        println(" out side of real number must solve interms of complex number ")
+    {
+        val realpart=-b /(2 * a )
+        val imaginarypart= sqrt(-discriminant)/ (2 * a)
+        println("the real part is $realpart and imaginarypart=$imaginarypart i")
+    }
 }
