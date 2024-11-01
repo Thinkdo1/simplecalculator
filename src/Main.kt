@@ -1,12 +1,14 @@
+import kotlin.math.sqrt
 
 fun main() {
     while (true) {
         println("Choose an operation:")
         println("press 1,  for Sum")
         println("press 2, for Multiplication")
-        println("press3, for Division")
+        println("press 3, for Division")
         println("press 4, for subtraction")
-        println("press 5, to  Exit")
+        println("press 5, to calculate quadratic problem")
+        println("press 6, to  Exit")
 
         val choice = readln().toIntOrNull()
 
@@ -15,7 +17,8 @@ fun main() {
             2 -> mul()
             3 -> div()
             4 -> dif()
-            5 -> {
+            5 -> qua()
+            6 -> {
                 println("Exiting...")
                 return
             }
@@ -30,8 +33,8 @@ fun sum() {
     var summation = 0.0
 // while(true) means it will loop till break occur
     while (true) {
-        val input = readln()
-        val number = input.toDoubleOrNull()
+        val inputsum = readln()
+        val number = inputsum.toDoubleOrNull()
         if (number == null) {
             println("Invalid input. Please enter a valid number.")
             continue
@@ -49,58 +52,76 @@ fun mul(){
 
 
     while (true) {
-        val input1= readln().toDoubleOrNull()
-        if (input1==null)
+        val inputmul= readln().toDoubleOrNull()
+        if (inputmul==null)
         {
             println("Invalid input . please enter valid number")
             continue
         }
-        if(input1==1.0)break
-        multiplication *= input1
+        if(inputmul==1.0)break
+        multiplication *= inputmul
     }
     println("the multiplication is: $multiplication")
 
 
 }
 fun div() {
-    println("Please enter a number to start and  press 1 to see result")
-    var result = readln().toDoubleOrNull() ?: return println("Invalid input. Please enter a number.")
+    println("Please enter a number to start ")
+    var division = readln().toDoubleOrNull() ?: return println("Invalid input. Please enter a number.")
 
     while (true) {
-        println("Enter another number (press 1 to finish):")
-        val input = readln()
-        val c = input.toDoubleOrNull()
-        if (c == null) {
+        println("Enter another number and press 1 to see result ):")
+        val inputdiv = readln().toDoubleOrNull()
+        if ( inputdiv== null) {
             println("Invalid input. Please enter a number.")
             continue
         }
-        if (c == 1.0) break
-        if (c == 0.0) {
+        if (inputdiv == 1.0) break
+        if (inputdiv== 0.0) {
             println("Cannot divide by zero. Please enter a different number.")
             continue
         }
-        result /= c
-    }
+        division /= inputdiv    }
 
-    println("The result is: $result")
+    println("The result is: $division")
 }
 
 
 fun dif() {
-    println("Please enter numbers to subtract (enter 0 to finish):")
+    println("Please enter numbers to subtract ")
     var difference  = readln().toDoubleOrNull() ?: return println("Invalid input. Please enter a number.")
 
     while (true) {
-        println("Enter another number (enter 0 to finish):")
-        val input3 = readln().toDoubleOrNull()
+        println("Enter another number and enter 0 to see result):")
+        val inputdif = readln().toDoubleOrNull()
 
-        if (input3 == null) {
+        if (inputdif == null) {
             println("Invalid input. Please enter a valid number.")
             continue
         }
-        if (input3 == 0.0) break
-        difference -= input3
+        if (inputdif == 0.0) break
+        difference -= inputdif
     }
 
     println("The difference is: $difference")
+}
+fun qua(){
+    println("please enter a,b,c")
+    val a= readln().toDoubleOrNull() ?: return println("Invalid input. Please enter a number.")
+    val b= readln().toDoubleOrNull() ?: return println("Invalid input. Please enter a number.")
+    val c= readln().toDoubleOrNull() ?: return println("Invalid input. Please enter a number.")
+  val discriminant=(b * b)-(4 * a * c)
+    if (discriminant>0.0)
+    {
+       val result1=(-b + sqrt(discriminant))/(2 * a)
+       val result2=(-b - sqrt(discriminant))/(2 * a)
+        println("the possible results are $result1 ,$result2")
+    }
+    else if (discriminant==0.0)
+    {
+        val result=-b /(2 * a)
+        println("the possible result is $result")
+    }
+    else
+        println(" out side of real number must solve interms of complex number ")
 }
