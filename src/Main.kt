@@ -136,6 +136,10 @@ fun triangle() {
     val a = readln().toDoubleOrNull() ?: return println("Invalid input. Enter a number.")
     val b = readln().toDoubleOrNull() ?: return println("Invalid input. Enter a number.")
     val c = readln().toDoubleOrNull() ?: return println("Invalid input. Enter a number.")
+    if (!isValidTriangle(a, b, c)) {
+        println("The given sides do not form a valid triangle.")
+        return
+    }
 
     if (a == b && b == c) {
         println("Equilateral triangle")
@@ -153,23 +157,22 @@ fun triangle() {
 }
 
 fun equilateral(a: Double){
-    // Area = (sqrt(3) / 4) * a^2
    val area= (sqrt(3.0) / 4) * (a * a)
     println("Area: $area")
 }
 
 fun isosceles(a: Double, b: Double) {
-    // Height = sqrt(a^2 - (b/2)^2)
-    val height = Math.sqrt(a * a - (b / 2) * (b / 2))
+
+    val height = sqrt(a * a - (b / 2) * (b / 2))
    val  area= (0.5 * b * height)
     println("Area: $area")
 }
 
 fun scalene(a: Double, b: Double, c: Double) {
-    // Semi-perimeter
     val s = (a + b + c) / 2
-    // Area = sqrt(s * (s - a) * (s - b) * (s - c))
    val area=sqrt(s * (s - a) * (s - b) * (s - c))
     println("Area: $area")
 }
-
+fun isValidTriangle(a: Double, b: Double, c: Double): Boolean {
+    return (a + b > c) && (a + c > b) && (b + c > a)
+}
